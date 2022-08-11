@@ -1,6 +1,7 @@
 export default class ColumnChart {
   element;
   chartHeight = 50;
+  elementColum = {};
   constructor({
     data = [],
     label = "",
@@ -63,9 +64,19 @@ export default class ColumnChart {
     if (this.data.length) {
       this.element.classList.remove("column-chart_loading");
     }
+    this.elementColum = this.getElementColum()
+  }
+  getElementColum(){
+   const res = {}
+   const elements = this.element.querySelectorAll('[data-element]')
+   for(const key of elements){
+     res[key.dataset.element]=key
+   }
+   return res
   }
   update(data) {
-    this.getCharts(data);
+
+   this.elementColum.body.innerHTML = this.getCharts(data);
   }
   remove() {
     if (this.element) {
