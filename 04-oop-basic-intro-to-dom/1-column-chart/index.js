@@ -2,6 +2,7 @@ export default class ColumnChart {
   element;
   chartHeight = 50;
   elementColum = {};
+  
   constructor({
     data = [],
     label = "",
